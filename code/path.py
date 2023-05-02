@@ -19,4 +19,4 @@ def get_path():
                 path_join.append(path_lst)
     return path_join
 
-get_path()
+# get_path()
