@@ -1,3 +1,6 @@
 code/captioning/*
 code/save/*
 code/__pycache__/*
+ml/clip_reward/images/*
+ml/CLIP-Caption-Reward/*
+ml/clip_reward/*
