@@ -151,13 +151,13 @@ class Img2TxtCLIPReward():
 
 class PredictCategory():
     def __init__(self):
-        # self.sents_lst = ['a couple of birds flying in the cloudy sky with the clouds behind it', 
-        #              'a young person jumping on a metal railing with a sign next to the metal railing', 
-        #              'a guy wearing sunglasses standing on a wooden deck with his cell phone behind him', 
-        #              'a group of three young women standing together in a mirror with their cell phone behind', 
-        #              'two young women standing together near a fountain with each other on the concrete surface']
-        output = Img2TxtCLIPReward()
-        self.sents_lst = output.get_img2txt()
+        self.sents_lst = ['a couple of birds flying in the cloudy sky with the clouds behind it', 
+                     'a young person jumping on a metal railing with a sign next to the metal railing', 
+                     'a guy wearing sunglasses standing on a wooden deck with his cell phone behind him', 
+                     'a group of three young women standing together in a mirror with their cell phone behind', 
+                     'two young women standing together near a fountain with each other on the concrete surface']
+        # output = Img2TxtCLIPReward()
+        # self.sents_lst = output.get_img2txt()
 
         self.category = ['Health',
                     'Education', 
@@ -196,3 +196,4 @@ class PredictCategory():
 
 output = PredictCategory()
 print(output.get_predict())
+
