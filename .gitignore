@@ -1,6 +1,11 @@
-code/captioning/*
-code/save/*
-code/__pycache__/*
+code/img2text/captioning/*
+code/img2text/save/*
+code/img2text/__pycache__/*
 ml/clip_reward/images/*
 ml/CLIP-Caption-Reward/*
 ml/clip_reward/*
+hack_data/*
+code/img2text/clip/*
+code/img2text/scripts_FineCapEval/*
+code/img2text/tools/*
+
