@@ -13,6 +13,7 @@ import pytorch_lightning as pl
 from torchvision.transforms import Compose, Resize, CenterCrop, ToTensor, Normalize
 from PIL import Image
 from timm.models.vision_transformer import resize_pos_embed
+import requests
 
 import spacy
 from collections import Counter
@@ -194,6 +195,34 @@ class PredictCategory():
         max_key = max(category_similarities, key=category_similarities.get)
         return max_key
 
-output = PredictCategory()
-print(output.get_predict())
+# output = PredictCategory()
+# print(output.get_predict())
 
+class BooksRecommendation():
+    def __init__(self):
+        base_url = "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?applicationId=1028959429215953336"
+        output = PredictCategory()
+        new_keyword = output.get_predict()
+        new_keyword = "Health"
+        url = f"{base_url}&keyword={new_keyword}&sort=%2BitemPrice"
+
+        response = requests.get(url)
+        self.json_response = response.json()
+
+    def get_recommend(self):
+        recommendBooks = {"recommendBooks": []}
+        for i in range(30):
+            item = self.json_response['Items'][i]['Item']
+            title, isbn, item_url, item_price = (item['title'].replace('\u3000', ''), 
+                                                 item['isbn'], 
+                                                 item['itemUrl'], 
+                                                 item['itemPrice'])
+            
+            recommendBooks["recommendBooks"].append({"title": title, 
+                                                     "isbn": isbn, 
+                                                     "itemUrl": item_url, 
+                                                     "item_price": item_price})
+        return recommendBooks
+
+output = BooksRecommendation()
+print(output.get_recommend())
