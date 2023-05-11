@@ -212,11 +212,16 @@ class BooksRecommendation():
     def get_recommend(self):
         recommendBooks = {"recommendBooks": []}
         for i in range(30):
-            title = self.json_response['Items'][i]['Item']['title'].replace('\u3000', '')
-            isbn = self.json_response['Items'][i]['Item']['isbn']
-            item_url = self.json_response['Items'][i]['Item']['itemUrl']
-            item_price = self.json_response['Items'][i]['Item']['itemPrice']
-            recommendBooks["recommendBooks"].append({"title": title, "isbn": isbn, "itemUrl": item_url, "item_price": item_price})
+            item = self.json_response['Items'][i]['Item']
+            title, isbn, item_url, item_price = (item['title'].replace('\u3000', ''), 
+                                                 item['isbn'], 
+                                                 item['itemUrl'], 
+                                                 item['itemPrice'])
+            
+            recommendBooks["recommendBooks"].append({"title": title, 
+                                                     "isbn": isbn, 
+                                                     "itemUrl": item_url, 
+                                                     "item_price": item_price})
         return recommendBooks
 
 output = BooksRecommendation()
