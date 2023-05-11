@@ -7,13 +7,9 @@ from typing import List
 import sys
 import os
 
-# 現在のディレクトリを取得
 current_dir = os.path.dirname(os.path.abspath(__file__))
-# 親ディレクトリのパスを取得
 parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
-# 親ディレクトリをPythonのパスに追加
 sys.path.append(parent_dir+"/img2text/")
-# モジュールをインポート
 import main
 
 class Preference(BaseModel):
