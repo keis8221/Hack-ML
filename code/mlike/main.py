@@ -5,6 +5,7 @@ import random
 import json
 from PIL import Image
 import requests
+import time
 
 import spacy
 from collections import Counter
@@ -95,6 +96,7 @@ class BooksRecommendation():
     
 
 if __name__ == "__main__":
+    time.sleep(3)
     output = BooksRecommendation()
     print(output.get_recommend())
 
