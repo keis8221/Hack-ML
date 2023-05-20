@@ -10,11 +10,8 @@ class BooksRecommendation():
         base_url = "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?applicationId=1028959429215953336"
         output = PredictCategory()
         new_keyword = output.get_predict()
-        #new_keyword = category 
 
-        #new_keyword = "Health"
         url = f"{base_url}&keyword={new_keyword}&sort=%2BitemPrice"
-
         response = requests.get(url)
         self.json_response = response.json()
 
