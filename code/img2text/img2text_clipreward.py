@@ -20,13 +20,13 @@ class Img2TxtCLIPReward():
         self.device = 'cuda'
         reward = 'clips_grammar'
 
-        cfg = f'./configs/phase2/clipRN50_{reward}.yml'
+        cfg = f'./img2text/configs/phase2/clipRN50_{reward}.yml'
         self.opt = opts.parse_opt(parse=False, cfg=cfg)
 
-        url = "https://drive.google.com/drive/folders/1nSX9aS7pPK4-OTHYtsUD_uEkwIQVIV7W"
-        gdown.download_folder(url, quiet=True, use_cookies=False, output="./save/")
-        url = "https://drive.google.com/uc?id=1HNRE1MYO9wxmtMHLC8zURraoNFu157Dp"
-        gdown.download(url, quiet=True, use_cookies=False, output="./data/")
+        # url = "https://drive.google.com/drive/folders/1nSX9aS7pPK4-OTHYtsUD_uEkwIQVIV7W"
+        # gdown.download_folder(url, quiet=True, use_cookies=False, output="./img2text/save/")
+        # url = "https://drive.google.com/uc?id=1HNRE1MYO9wxmtMHLC8zURraoNFu157Dp"
+        # gdown.download(url, quiet=True, use_cookies=False, output="./data/")
 
         dict_json = json.load(open('./data/cocotalk.json'))
 
@@ -43,7 +43,7 @@ class Img2TxtCLIPReward():
 
         model = models.setup(self.opt)
         del self.opt.vocab
-        ckpt_path = self.opt.checkpoint_path + '-last.ckpt'
+        ckpt_path = 'img2text/' + self.opt.checkpoint_path + '-last.ckpt'
 
         raw_state_dict = torch.load(
             ckpt_path,

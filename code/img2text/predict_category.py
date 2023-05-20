@@ -3,8 +3,9 @@ import sister
 from collections import Counter
 from scipy.spatial.distance import cosine
 #from img2text_clipreward import Img2TxtCLIPReward
-from img2text_clipreward import Img2TxtCLIPReward
+from img2text.img2text_clipreward import Img2TxtCLIPReward
 from pytorch_lightning.callbacks import ModelCheckpoint
+
 
 
 class PredictCategory():
@@ -31,6 +32,7 @@ class PredictCategory():
         
     def get_predict(self):
         embedder = sister.MeanEmbedding(lang="en")
+        print(embedder)
 
         nlp = spacy.load('en_core_web_sm')
 
