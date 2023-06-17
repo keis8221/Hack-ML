@@ -9,7 +9,6 @@ import time
 
 import spacy
 from collections import Counter
-import numpy as np
 from scipy.spatial.distance import cosine
 import sister
 
@@ -27,7 +26,7 @@ class PredictCategory():
                     'Family']
         
     def get_random_images(self):
-        imgdata_dir = '/home/tomo/Documents/hack/Hack-ML/hack_data'
+        imgdata_dir = '/home/vagrant/Documents/hack/Hack-ML/hack_data'
         os.chdir(imgdata_dir)
         image_files = [f for f in os.listdir('.') if os.path.isfile(f) and f.lower().endswith(('.jpg'))]
         selected_images = random.sample(image_files, 5)
@@ -71,9 +70,9 @@ class PredictCategory():
 class BooksRecommendation():
     def __init__(self):
         base_url = "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404?applicationId=1028959429215953336"
-        output = PredictCategory()
-        new_keyword = output.predict_category()
-        # new_keyword = "Health"
+        # output = PredictCategory()
+        # new_keyword = output.predict_category()
+        new_keyword = "Health"
         url = f"{base_url}&keyword={new_keyword}&sort=%2BitemPrice"
 
         response = requests.get(url)
@@ -96,7 +95,6 @@ class BooksRecommendation():
     
 
 if __name__ == "__main__":
-    time.sleep(3)
+    # time.sleep(3)
     output = BooksRecommendation()
-    print(output.get_recommend())
-
+    print(output.get_recommend()['recommendBooks'])

@@ -9,13 +9,13 @@ import os
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
-sys.path.append(parent_dir+"/img2text/")
+sys.path.append(parent_dir+"/mlike/")
 import main
 
 class Preference(BaseModel):
     preferences: List[str]
 
-@app.post("/recommend")
+@app.get("/")
 async def recommend():
     output = main.BooksRecommendation()
     return output.get_recommend()
@@ -23,3 +23,5 @@ async def recommend():
 ## pip install fastapi, uvicorn
 ## uvicorn my_api:app --port 8080   
 ## curl -X POST -H "Content-Type: application/json" http://localhost:8080/recommend
+
+## curl -X POST -H "Content-Type: application/json" http://localhost:5000
